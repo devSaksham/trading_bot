@@ -64,7 +64,7 @@ def validate_stop_price(stop_price, order_type):
         raise ValueError(f"stopPrice must be greater than 0. Got: {sp}")
     return sp
 
-def validate_parameters(
+def validate_order_inputs(
     symbol, side, order_type, quantity,
     price = None, stop_price = None):
 
