@@ -104,13 +104,13 @@ class BinanceClient:
 
 
     def get(self,url, params = None):
-        return self._request("GET", url, params or {})
+        return self._request("GET", BASE_URL+url, params or {})
 
     def delete(self,url, params = None):
-        return self._request("DELETE", url,params or {})
+        return self._request("DELETE", BASE_URL+url,params or {})
 
     def post(self, url, params = None):
-        return self._request("POST", url, params or {})
+        return self._request("POST", BASE_URL+url, params or {})
 
 
     def ping(self):
