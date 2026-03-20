@@ -114,8 +114,6 @@ python cli.py --interactive
 
 ---
 
----
-
 ## Logging
 
 All API requests, responses, and errors are written to `logs/trading_bot.log`.
