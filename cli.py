@@ -17,13 +17,10 @@ load_dotenv()
 logger = setup_logger()
 
 
-# ── Pretty printers ───────────────────────────────────────────────────────────
-
 def print_banner() -> None:
     print("""
 ============================================
-    Binance Futures Testnet  Trading Bot   
-          USDT-M  |  Python 3.x            
+    Binance Futures Testnet  Trading Bot             
 ============================================
 """)
 
@@ -48,7 +45,7 @@ def print_request_summary(
     print("-------------------------------------------\n")
 
 
-# ── Interactive mode ──────────────────────────────────────────────────────────
+# Interactive mode
 
 def prompt(label: str, default: str | None = None) -> str:
     suffix = f" [{default}]" if default else ""
@@ -119,7 +116,7 @@ def run_interactive() -> dict:
     }
 
 
-# ── Argument parser ───────────────────────────────────────────────────────────
+# Argument parser
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
@@ -143,7 +140,7 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────
+# Main
 
 def main() -> None:
     print_banner()
@@ -163,12 +160,12 @@ def main() -> None:
     parser = build_parser()
     args   = parser.parse_args()
 
-    # ── Utility commands ──────────────────────────────────────────────────────
+    # Utility commands
 
     if args.balance:
         try:
             balances = client.get_balance()
-            print("\n── Account Balance ────────────────────────")
+            print("\n-- Account Balance ------------------------")
             for b in balances:
                 if float(b.get("balance", 0)) > 0:
                     print(f"  {b['asset']:10} | Balance: {b['balance']:>18} | Available: {b['availableBalance']}")
@@ -185,7 +182,7 @@ def main() -> None:
             print(f"Failed to fetch price: {exc}")
         return
 
-    # ── Gather inputs ─────────────────────────────────────────────────────────
+    #Gather inputs
 
     if args.interactive:
         inputs = run_interactive()
@@ -214,7 +211,7 @@ def main() -> None:
             "stop_price": args.stop_price,
         }
 
-    # ── Validate ──────────────────────────────────────────────────────────────
+    # Validate 
 
     try:
         validated = validate_order_inputs(**inputs)
@@ -223,7 +220,7 @@ def main() -> None:
         logger.warning("Validation failed: %s | inputs=%s", exc, inputs)
         sys.exit(1)
 
-    # ── Show request summary ──────────────────────────────────────────────────
+    #  Show request summary
 
     print_request_summary(
         symbol     = validated["symbol"],
@@ -240,7 +237,7 @@ def main() -> None:
         logger.info("Order cancelled by user.")
         sys.exit(0)
 
-    # ── Place order ───────────────────────────────────────────────────────────
+    #Place orde
 
     try:
         result = place_order(
