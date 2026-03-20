@@ -114,33 +114,6 @@ python cli.py --interactive
 
 ---
 
-## Example Output
-
-```
-── Order Request ──────────────────────────
-  Symbol     : BTCUSDT
-  Side       : BUY
-  Type       : MARKET
-  Quantity   : 0.01
-───────────────────────────────────────────
-
-  Confirm order? (yes/no) [yes]: yes
-
-═════════════════════════════════════════════
-    ORDER PLACED SUCCESSFULLY
-═════════════════════════════════════════════
-  Order ID     : 3822605543
-  Symbol       : BTCUSDT
-  Side         : BUY
-  Type         : MARKET
-  Status       : FILLED
-  Quantity     : 0.010
-  Executed Qty : 0.010
-  Avg Price    : 42613.50
-  Time In Force: GTC
-═════════════════════════════════════════════
-```
-
 ---
 
 ## Logging
